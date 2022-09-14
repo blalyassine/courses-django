@@ -1,0 +1,17 @@
+{% extends "layouts/master.html" %}
+{% block body  %} 
+   <div class="row">
+    <div class="col-md-6 mx-auto">
+        <h1 class="my-4">login</h1>
+
+        <form action="" method="post" >
+             {% load crispy_forms_tags %}
+            {% csrf_token %}
+            {{ form|crispy }}
+            <p class="my-4">Havent a acount? create one <a href="/signup">here</a></p>
+            <button class="btn btn-success m-4">login</button>
+        </form>
+
+    </div>
+   </div>
+{% endblock %}

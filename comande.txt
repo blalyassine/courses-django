@@ -1,0 +1,51 @@
+
+ 
+ python manage.py runserver
+ ---------------------
+python manage.py makemigrations courses
+python manage.py migrate
+python manage.py migrate  courses 0001
+python manage.py migrate  courses zero
+----------------------
+ python manage.py shell
+
+ from  courses.models  import Course 
+
+
+  php = Course(title="php" ,body="php",price=33,slug="php",images="")
+  php.save()
+Course.objects.all()
+
+------------
+make env => va dossier globl 
+python -m venv .env
+
+activate => va dossier globl 
+source .env/Scripts/activate
+
+-----------
+
+
+pip install django-crispy-forms
+
+--------------------------
+py -m pip freeze
+
+python -m pip freeze > requirements.txt
+
+generate ficcher requirements
+pip3 freeze > requirements.txt
+
+python -m pip install -r requirements.txt
+--------------
+
+pip freeze > requirements.txt
+
+# Remove one by one.
+pip uninstall -r requirements.txt
+
+# Remove all at once.
+pip uninstall -r requirements.txt -y
+ python -m pip install django-crispy-forms
+ python -m pip install crispy-bootstrap5
+

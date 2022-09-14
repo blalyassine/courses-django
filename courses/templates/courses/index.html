@@ -1,0 +1,63 @@
+{% extends "layouts/master.html" %}
+{% block body  %} 
+<div class="row my-5">
+    <div class="col-md-6">
+        <h3 class="text-center">{{ courses.title|upper }} course{{courses|pluralize}}: ({{courses|length}})</h3>
+
+    </div>
+    <div class="col-md-6 text-end">
+        <a href="{% url 'courses_create'  %}" class="btn btn-success">news courses</a>
+    </div>
+</div>
+<div class="row  my-1">
+    <div class="col-md-12">
+        {% if courses %}
+            <div class="row">
+            {% for course in courses %}
+                <div class="col-md-4 my-3">
+                    <div class="card">
+                        <span class="badge bg-dark">
+                            {{course.category.label|upper}}
+                        </span>
+                        <!-- <a href="/courses/{{ course.id }}"> -->
+                        <a href="{% url 'courses_show' course.id  %}">
+                            <img class="card-img-top" src="{{ course.image }}" alt="{{ course.title }}">
+                        </a>
+
+                        <div class="card-body">
+                            <h4 class="card-title">{{ course.title|upper }}</h4>
+                            <p class="card-text">{{ course.body|truncatewords:10|safe }}</p>
+                            <!-- <a name="" id="" class="btn btn-warning " href="#" role="button">
+                                {% if course.price == 0 %}
+                                    <span style="color:blue">price : free<span>
+                                {% elif course.price < 25 %}
+                                    <span style="color:green">price : {{ course.price|floatformat:2 }}<span>
+                                {% else %}
+                                    <span style="color:red">price : {{ course.price|floatformat:2 }}<span>
+                            {% endif %}
+                            </a> -->
+                            <button class="btn btn-success text-end">
+                                price : ${{ course.price|floatformat:2|default:"Free" }}
+                            </button>
+                            <hr>
+                            {% for tag in course.tags.all %}
+                                <span class="badge bg-danger">{{tag.label}}</span>
+                            {% endfor %}
+                            <hr>
+                            <a href="{% url 'courses_edit' course.id  %}" class="btn btn-warning">edit</a>
+                            <a href="{% url 'courses_delete' course.id  %}" class="btn btn-danger">delete</a>
+                            
+                        </div>
+                    </div>
+                 </div>
+            {% endfor %}
+
+            </div>
+        {% else %}
+            <p style="color:red">no courses now</p>
+        {% endif %}
+
+    </div>
+</div>
+{% endblock %}
+

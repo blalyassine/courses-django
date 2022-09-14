@@ -1,0 +1,29 @@
+{% extends "layouts/master.html" %} {% block body %}
+
+<div class="row">
+  <div class="col-md-12">
+    <h1 class="display-1 text-center my-4">Edit a Course</h1>
+
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <form action="" method="POST">
+          {% csrf_token %} {% for field in form %}
+
+          <div class="mb-3">
+            <label for="{{ field.id_for_label }}" class="form-label">
+              {{ field.label }}
+            </label>
+            {{ field }}
+          </div>
+
+          {% endfor %}
+          <div class="d-grid">
+            <button type="submit" class="btn btn-danger">Update</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
